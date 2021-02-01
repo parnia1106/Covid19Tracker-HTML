@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SokanAcademy Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="side-nav">
+          <div class="nav-header">
+              <i class="fa fa-circle" aria-hidden="true"></i><h6>Covid 19 Tracker</h6>
+          </div>
+
+          <div class="nav-content">
+              <ul>
+                  <a href="overview.html"><li><i class='fas'>&#xf200;</i>Overview</li></a>
+                  <a href="patients.html"><li class="active"><i class='fas'>&#xf3ff;</i>Patients</li></a>
+                  <a href=""><li><i style='font-size:16px' class='fas'>&#xf0eb;</i>Link number 2</li></a>
+                  <a href=""><li><i class='fas'>&#xf0c0;</i>Link number 3</li></a>
+                  <a href=""><li><i class='fas'>&#xf406;</i>Link number 4</li></a>
+                  <a href=""><li><i class='fas'>&#xf02d;</i>Link number 5</li></a>
+                  <hr>
+                  <a href=""><li><i class='fas'>&#xf013;</i>Setting</li></a>
+                  <a href=""><li><i class='fas'>&#xf2f5;</i>Logout</li></a>
+              </ul>
+          </div>
+      </div>
+
+
+      <div class="nav">
+          <div class="nav-profile">
+              <img src="image/1.png" alt="" class="profile-image">
+              <span class="profile-name">Jones Ferdinand</span>
+          </div>
+
+          <div class="vl"></div>
+
+          <div class="nav-icon">
+              <i class='fas'>&#xf0f3;</i>
+              <i class='fas'>&#xf002;</i>
+          </div>
+
+      </div>
+
+
+      <ul id="slide-out" class="sidenav">
+        <li>
+            <a href="overview.html"><i class='fas'>&#xf200;</i>Overview</a>
+        </li>
+        <li>
+            <a href="patients.html"><i class='fas'>&#xf3ff;</i>Patients</a>
+        </li>
+        <li>
+            <a href=""><i style='font-size:16px' class='fas'>&#xf0eb;</i>Link number 2</a>
+        </li>
+        <li>
+            <a href=""><i class='fas'>&#xf0c0;</i>Link number 3</a>
+        </li>
+        <li>
+            <a href=""><i class='fas'>&#xf406;</i>Link number 4</a>
+        </li>
+        <li>
+            <a href=""><i class='fas'>&#xf02d;</i>Link number 5</a>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li style="height: 0;">
+            <a href="#" class="subheader"></a>
+          </li>
+        <li>
+            <a href=""><i class='fas'>&#xf013;</i>Setting</a>
+        </li>
+        <li>
+            <a href=""><i class='fas'>&#xf2f5;</i>Logout</a>
+        </li>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+      <div class="page-title">
+        <span>Patients</span>
+      </div>
+      <div class="content2" id="patients-list">  
+        <div class="card">
+              <div class="title">
+                <span>All patients</span>
+              </div>
+              <div class="card-content">
+                  <table class="responsive-table">
+                      <thead>
+                        <tr>
+                            <th>User Details</th>
+                            <th>Birth Details</th>
+                            <th>Registeration Date</th>
+                            <th>Infection Level</th>
+                        </tr>
+                      </thead>
+              
+                      <tbody>
+                        <tr v-for="patient in patients">
+                          <td class="user-detail">
+                            <img :src="patient.userimage" alt="" class="user-image">
+                            <div>
+                              <p class="user-name">{{patient.username}}</p>
+                              <p class="last-update">{{patient.lastupdate}}</p>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="user-city">{{patient.city}}</p>
+                            <p class="user-bd">on {{patient.birthday}}</p>
+                          </td>
+                          <td>
+                            <p class="reg-date">{{patient.regdate}}</p>
+                            <p class="reg-time">{{patient.regtime}}</p>
+                          </td>
+                          <td class="level">
+                            <span class="badge white-text" :class="{'redcolor':patient.level == 'high','yellowcolor':patient.level == 'low', 'greencolor':patient.level == 'normal'}">{{patient.level}}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>        
+      </div>
+
+    </body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>'
+    <script type="text/javascript" src="js/code.js"></script>
+        
+</html>

@@ -1,0 +1,387 @@
+@font-face {
+    font-family: 'mulish';
+    src: url("../font/Mulish-Light.woff2") format("woff2"), 
+    url("../font/Mulish-Light.woff") format("woff"), 
+    url("../font/Mulish-Light.ttf") format("ttf");
+}
+
+body{
+    margin: 0;
+    width: 100%;
+    background-color: rgb(247, 248, 252);
+    position: relative;
+    font-family: 'mulish';
+}
+
+.sidenav-trigger{
+    display: none;
+}
+
+.side-nav{
+    float: left;
+    width: 255px;
+    height: 100vh;
+    background-color: rgb(54, 55, 64);
+    position: sticky;
+    top: 0;    
+
+    .nav-header{
+        height: 88px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: center;
+        
+
+        h6{
+            color: rgb(146,147,160);
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        i{
+            font-size: 32px;
+            color: rgb(55, 81, 255);
+            padding: 5px 10px 0 0;
+        }
+
+    }
+
+    .nav-content{
+
+        a{
+            color: rgb(146,147,160);
+
+            li{
+                padding: 15px 32px;
+                font-size: 16px;
+                cursor: pointer;
+                border-left: 2px solid rgb(54, 55, 64);
+        
+                
+        
+                i{
+                    font-size: 15px;
+                    padding-right: 42px;
+                    color: rgb(96, 98, 110);
+                    width: 5px;
+                }
+                
+
+                &:hover{
+                    background-color: rgb(62, 64, 73);
+                    border-left: 2px solid rgb(221, 226, 255);
+
+                    a,i{
+                        color: rgb(221, 226, 255);
+                    }
+                }
+            }
+        }
+    
+        hr{
+            border: 0; 
+            border-top: 2px solid rgb(59, 60, 69);
+        }
+
+    }
+}
+
+.nav{
+    direction: rtl;
+    height: 80px;
+    padding:25px 30px;
+    display: flex;
+    flex-flow: row wrap;
+
+    .nav-profile{
+        display: flex;
+        flex-flow: row wrap;
+        
+        .profile-image{
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+        }
+    
+        .profile-name{
+            font-size: 14px;
+            font-weight: bold;
+            padding: 13px 15px;
+        }
+    }
+
+    .vl{
+        width: 16px; 
+        border-left: 1px solid rgb(235,236,243);
+        margin-top: 5px;
+    }
+
+    .nav-icon{
+        color: rgb(197, 199, 205);
+        margin-right: 10px;
+        
+        
+        i{
+            padding: 15px 20px 0 0;
+            cursor: pointer;
+            font-size: 15px;
+        }
+    }
+    
+}
+
+.page-title{
+    position: absolute;
+    left:280px;
+    top:27px; 
+    font-size: 24px;
+    font-weight: bold; 
+}
+
+.content1{
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    margin-top: 50px;
+
+    .row{
+        width: 96%; 
+        text-align: center;
+        margin-bottom: 5px;
+
+        .col{
+            margin-bottom: 20px;
+            
+
+            .statistics{
+                background-color: white;
+                border: 1px solid #DFE0EB;
+                border-radius: 8px;
+                width: 99%;
+                height: 132px;
+            
+
+                .title{
+                    font-size: 19px;
+                    color: #9FA2B4;
+                    font-weight: bold;
+                    margin:20px 0 5px 0;
+                }
+
+                .number{
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+            }
+
+            #bold{
+                border: 1px solid #3751FF;
+                .title, .number{
+                    color: #3751FF;
+                }
+            }
+        }
+    } 
+
+    .chart{
+        padding: 15px;
+        margin-bottom: 40px;
+        margin-left: 3.5%;
+        width: 93%;
+        background-color: white;
+        border: 1px solid #DFE0EB;
+        border-radius: 8px;
+    }
+}
+
+.content2{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+
+    .card{
+        width: 94%;
+        border-radius: 5px;
+
+        .title{
+            padding:  20px 30px;
+            font-weight: bold;
+            font-size: 19px;
+            color:  rgb(54, 55, 64);;
+        }
+
+        .card-content{
+            padding: 0;
+
+            table{
+                width: 100%;
+                font-size: 14px;
+                font-weight: bold;
+
+                th{
+                    padding-left: 25px;
+                    font-size: 14px;
+                    color: rgb(177, 181, 194);
+                }
+
+                td{
+                    padding-left: 25px;
+                    height: 90px;
+                }
+
+                .badge{
+                    font-size: 10px; 
+                    border-radius: 15px;
+                }
+
+                .user-detail{
+                    display: flex;
+                    flex-flow: row wrap;
+                    
+
+                    .user-image{
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 100%;
+                        margin-top: 7px;
+                    }
+
+                    .user-name{
+                        padding: 12px 20px;
+                        padding-bottom: 0;
+                    }
+
+                    .last-update{
+                        padding-left: 20px;
+                    }
+                    
+                }
+
+                .last-update, .user-bd, .reg-time{
+                    font-weight: 400;
+                    font-size: 12px;
+                    color: #C5C7CD;
+                }
+
+                .badge{
+                    text-transform: uppercase;
+                    font-size: 10px; 
+                }
+
+            }
+            
+        }
+    }
+}
+
+.redcolor{
+    background-color: #F12B2C;
+}
+
+.yellowcolor{
+    background-color: #FEC400;
+}
+
+.greencolor{
+    background-color: #29CC97;
+}
+
+.active{
+    background-color: rgb(62, 64, 73);
+}
+
+@media only screen and (max-width: 768px) {
+    .side-nav{
+        display: none;
+    }
+
+    .sidenav-trigger{
+        display: block;
+        float: left;
+        position: absolute;
+        top: 35px;
+        left:30px;
+    }
+
+    .nav{
+        .nav-profile{
+            .profile-image{
+                width: 30px;
+                height: 30px;
+                margin-top: 7px;
+            }
+            .profile-name{
+                font-size: 12px;
+                padding: 12px 15px 0 0;
+            }
+            .nav-icon{
+                padding: 0;
+            }
+        }
+    }
+
+    .page-title{
+        display: none;
+    }
+
+    .content1{
+        .row{
+            .col{
+                .statistics{
+                    .title{
+                        font-size: 14px;
+                    }
+                    .number{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .content2{
+        .card{
+            .title{
+                font-size: 16px;
+            }
+            .card-content{
+                table{
+                    font-size: 12px;
+
+                    th{
+                        font-size: 11px;
+                        padding-bottom: 40px;
+                        
+                    }
+
+                    td{
+                        height: 71px;
+                    }
+
+                    .user-detail{
+                        .user-image{
+                            width: 30px;
+                            height: 30px;
+                            margin-top: 0;
+                        }
+
+                        .user-name{
+                            padding: 0;
+                            margin-left: 10px;
+                        }
+
+                        .last-update{
+                            padding: 0;
+                            margin-left: 10px;
+                            font-size: 10px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SokanAcademy Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="materialize/css/materialize.css">
+        <link rel="stylesheet" href="materialize/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="side-nav">
+            <div class="nav-header">
+                <i class="fa fa-circle" aria-hidden="true"></i><h6>Covid 19 Tracker</h6>
+            </div>
+
+            <div class="nav-content">
+                <ul>
+                    <a href="overview.html"><li class="active"><i class='fas'>&#xf200;</i>Overview</li></a>
+                    <a href="patients.html"><li><i class='fas'>&#xf3ff;</i>Patients</li></a>
+                    <a href=""><li><i style='font-size:16px' class='fas'>&#xf0eb;</i>Link number 2</li></a>
+                    <a href=""><li><i class='fas'>&#xf0c0;</i>Link number 3</li></a>
+                    <a href=""><li><i class='fas'>&#xf406;</i>Link number 4</li></a>
+                    <a href=""><li><i class='fas'>&#xf02d;</i>Link number 5</li></a>
+                    <hr>
+                    <a href=""><li><i class='fas'>&#xf013;</i>Setting</li></a>
+                    <a href=""><li><i class='fas'>&#xf2f5;</i>Logout</li></a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="nav-profile">
+                <img src="image/1.png" alt="" class="profile-image">
+                <span class="profile-name">Jones Ferdinand</span>
+            </div>
+
+            <div class="vl"></div>
+
+            <div class="nav-icon">
+                <i class='fas'>&#xf0f3;</i>
+                <i class='fas'>&#xf002;</i>
+            </div>
+
+        </div>
+
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <a href="overview.html"><i class='fas'>&#xf200;</i>Overview</a>
+            </li>
+            <li>
+                <a href="patients.html"><i class='fas'>&#xf3ff;</i>Patients</a>
+            </li>
+            <li>
+                <a href=""><i style='font-size:16px' class='fas'>&#xf0eb;</i>Link number 2</a>
+            </li>
+            <li>
+                <a href=""><i class='fas'>&#xf0c0;</i>Link number 3</a>
+            </li>
+            <li>
+                <a href=""><i class='fas'>&#xf406;</i>Link number 4</a>
+            </li>
+            <li>
+                <a href=""><i class='fas'>&#xf02d;</i>Link number 5</a>
+            </li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li style="height: 0;">
+                <a href="#" class="subheader"></a>
+              </li>
+            <li>
+                <a href=""><i class='fas'>&#xf013;</i>Setting</a>
+            </li>
+            <li>
+                <a href=""><i class='fas'>&#xf2f5;</i>Logout</a>
+            </li>
+        </ul>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        <div class="page-title">
+            <span>Covid 19 Tracker</span>
+        </div>
+        <div class="content1">
+            <div class="row">
+                <div class="col l3 m3 s6">
+                    <div class="statistics">
+                        <p class="title">Total</p>
+                        <span class="number" id="total"></span>
+                    </div>
+                </div>
+                <div class="col l3 m3 s6">
+                    <div class="statistics" id="bold">
+                        <p class="title">Active</p>
+                        <span class="number" id="active"></span>
+                    </div>
+                </div>
+                <div class="col l3 m3 s6">
+                    <div class="statistics">
+                        <p class="title">Recovered</p>
+                        <span class="number" id="recovered"></span>
+                    </div>
+                </div>
+                <div class="col l3 m3 s6">
+                    <div class="statistics">
+                        <p class="title">Death</p>
+                        <span class="number" id="death"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart">
+                <canvas id="myChart" width="100%" height="450px"></canvas>
+            </div>   
+        </div>   
+
+    </body>
+
+    <script>
+        const xlabels = [];
+        const ydatas = [];
+
+        chartIt();
+        
+        async function chartIt(){
+            await getData();
+            const myChart = document.getElementById('myChart').getContext('2d');
+            
+            const gridChart = new Chart(myChart, {
+                type: 'line',
+                data:{
+                    labels : xlabels,
+                    datasets : [{
+                        label: 'Population',
+                        data: ydatas,
+                        backgroundColor: '#3853ff18',
+                        borderColor: '#3751FF',
+                    }],
+                },
+                
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title:{
+                        display: true,
+                        text: 'Total Covid 19 Gragh',
+                        fontSize:20,
+                    },
+                    legend:{
+                        display: false,
+                    }
+                },
+            });
+        }
+
+        
+        async function getData(){
+            const response = await fetch('https://api.covid19api.com/summary');
+            const covid = await response.json();
+            const countries = covid.Countries;
+            for(let cnt in countries){
+                let countryName = countries[cnt].Country;
+                xlabels.push(countryName)
+
+                let total = countries[cnt].TotalConfirmed;
+                ydatas.push(total);
+            }
+
+            let covidtotal = document.getElementById('total');
+            console.log(covid.Global.TotalConfirmed);
+            covidtotal.innerHTML = covid.Global.TotalConfirmed;
+
+            let covidactive = document.getElementById('active');
+            covidactive.innerHTML = covid.Global.NewConfirmed;
+
+            let covidrecovered = document.getElementById('recovered');
+            covidrecovered.innerHTML = covid.Global.TotalRecovered;
+            
+            let coviddeath = document.getElementById('death');
+            coviddeath.innerHTML = covid.Global.TotalDeaths;
+
+        }
+
+        
+
+    </script>
+
+    <script type="text/javascript" src="js/code.js"></script>
+    <script src="materialize/js/materialize.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    
+    
+</html>
